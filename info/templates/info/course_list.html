@@ -1,0 +1,148 @@
+{% extends 'info/index.html' %}
+
+{% load static %}
+
+{% block main %}
+<section class="grey page-title">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 text-left">
+                <h1>Course List Page</h1>
+            </div>
+            <div class="col-md-6 text-right">
+                <div class="bread">
+                    <ol class="breadcrumb">
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">Courses</a></li>
+                        <li class="active">Course List Page</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="white section">
+    <div class="container">
+        {% for course in page_obj.object_list %}
+        <div class="row course-list">
+            <div class="col-md-4 col-sm-4 col-xs-12">
+                <div class="shop-item-list entry">
+                    <div class="">
+                        <img src="{{ course.image.url }}" alt="{{ course.title }}">
+                        <div class="magnifier">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-8 col-md-8">
+                <div class="shop-list-desc">
+                    <h4><a href="{% url 'course_details' course.id %}">{{ course.title }}</a></h4>
+                    <div class="shopmeta">
+                        <span class="pull-left"><strong>Course Price:</strong> ${{ course.price }} </span>
+                        <div class="rating pull-right">
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                        </div>
+                    </div>
+                    <hr class="invis clearfix">
+                    <p>{{ course.description }}...</p>
+                    <a href="{% url 'course_details' course.id %}" class="btn btn-default btn-sm">Learn More</a>
+                </div>
+            </div>
+        </div>
+        {% empty %}
+        <li>No courses available at the moment.</li>
+        {% endfor %}
+        <hr class="invis">
+        <div class="row">
+            <div class="col-md-12">
+                <nav class="text-center">
+                    <ul class="pagination">
+                        {% if page_obj.has_previous %}
+                        <li>
+                            <a href="?page={{ page_obj.previous_page_number }}" aria-label="Previous">
+                                <span aria-hidden="true">&laquo;</span>
+                            </a>
+                        </li>
+                        {% endif %}
+
+                        {% for num in page_obj.paginator.page_range %}
+                        {% if page_obj.number == num %}
+                        <li><a><strong>{{ num }}</strong></a></li>
+                        {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %}
+                        <li><a href="?page={{ num }}">{{ num }}</a></li>
+                        {% endif %}
+                        {% endfor %}
+                        {% if page_obj.has_next %}
+                        <li>
+                            <a href="?page={{ page_obj.next_page_number }}" aria-label="Next">
+                                <span aria-hidden="true">&raquo;</span>
+                            </a>
+                        </li>
+                        {% endif %}
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="grey section">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="section-title text-center">
+                    <h4>Happy Parents</h4>
+                    <p>What Our Student Parent Say About Unicorn-Tech3 Academy</p>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-4 col-md-4 col-sm-12">
+                <div class="testimonial">
+                    <img class="alignleft img-circle"
+                         src="{% static 'info/upload/xstudent_01.png.pagespeed.ic.756JwMcqdq.png' %}" alt="">
+                    <p>I did not regret bringing my child to Unicorn-Tech3 Academy.  </p>
+                    <div class="testimonial-meta">
+                        <h4>John Liuedeg <small><a href="#">.com</a></small></h4>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-12">
+                <div class="testimonial">
+                    <img class="alignleft img-circle"
+                         src="{% static 'info/upload/xstudent_02.png.pagespeed.ic.y-PM-y4pVj.png' %}" alt="">
+                    <p>My child's performance had changed tremendiously.</p>
+                    <div class="testimonial-meta">
+                        <h4>Jenny Anderson <small><a href="#">photodune.com</a></small></h4>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-12">
+                <div class="testimonial">
+                    <img class="alignleft img-circle"
+                         src="{% static 'info/upload/xstudent_03.png.pagespeed.ic.uCQY3WNMCJ.png' %}" alt="">
+                    <p>The exact school I am looking for. Best for now.</p>
+                    <div class="testimonial-meta">
+                        <h4>Mark BOBS <small><a href="#">tutsplus.com</a></small></h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="button-wrapper text-center">
+            <p>At Unicorn-Tech3 Academy, we believe in unlocking every child’s potential to
+                become a tech unicorn start-up founder – an innovator who not only thrives
+                globally but also creates sustainable solutions to local challenges.  </p>
+            <a href="{% url 'course_list' %}" class="btn btn-default border-radius"><i class="fa fa-sign-in"></i> Join
+                Us
+                Today</a>
+            &nbsp;&nbsp;&nbsp;&nbsp; <a href="{% url 'course_list' %}" class="btn btn-primary"><i
+                class="fa fa-download"></i>
+            Download Our Bronchure</a>
+        </div>
+    </div>
+</section>
+{% endblock main %}

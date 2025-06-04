@@ -1,0 +1,210 @@
+{% extends 'info/index.html' %}
+
+{% load static %}
+
+{% block main %}
+<section class="grey page-title">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 text-left">
+                <h1>Single Course Page</h1>
+            </div>
+            <div class="col-md-6 text-right">
+                <div class="bread">
+                    <ol class="breadcrumb">
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">Courses</a></li>
+                        <li class="active">Single Course Page</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="white section">
+    <div class="container">
+        <div class="row">
+            <div id="course-left-sidebar" class="col-md-4">
+                <div class="course-image-widget">
+                    <img src="{{ course.image.url }}" alt="" class="img-responsive">
+                </div>
+                <div class="course-meta">
+                    <div class="rating">
+                        <p>Reviews : &nbsp;
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                        </p>
+                    </div>
+                    <hr>
+                    <p class="course-student">Students : {{ student_no }} Members </p>
+                    <hr>
+                    <p class="course-time">Period : {{ course.duration }} Month </p>
+                    <hr>
+                    <p class="course-prize">Prize : <i class="fa fa-trophy"></i> <i class="fa fa-certificate"></i> <i
+                            class="fa fa-shield"></i></p>
+                    <hr>
+                    <p class="course-instructors">Instructor : <a href="#" title="">
+                        {{ course.lecturer.user.first_name }} {{ course.lecturer.user.last_name }}</a>
+                    </p>
+                </div>
+                <div class="course-button">
+                    <a href="{% url 'register' %}" class="btn btn-primary btn-block">TAKE THIS COURSE</a>
+                </div>
+            </div>
+            <div id="course-content" class="col-md-8">
+                <div class="course-description">
+                    <small>Course Status: <span>In Progress</span> </small>
+                    <small>Course Price: <span>${{ course.price }}</span> </small>
+                    <h3 class="course-title">{{ course.title }}</h3>
+                    <p>{{ course.description }}</p>
+                </div>
+                <div class="course-table">
+                    <h4>Course Lessons</h4>
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th>Type</th>
+                            <th>Lesson Title</th>
+                            <th>Time</th>
+                            <th>Status</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for lesson in lessons %}
+                        <tr>
+                            <td><i class="fa fa-play-circle"></i></td>
+                            <td><a href="">{{ lesson.title }}</a></td>
+                            <td>{{ lesson.title }} Min</td>
+                            {% if lesson.is_completed %}
+                            <td><i class="fa fa-check"></i></td>
+                            {% else %}
+                            <td><i class="fa fa-close"></i></td>
+                            {% endif %}
+                        </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+                <hr class="invis">
+                <div id="reviews" class="feedbacks">
+                    <p>
+                        <a class="btn btn-default btn-block" role="button" data-toggle="collapse"
+                           href="#collapseExample"
+                           aria-expanded="false" aria-controls="collapseExample">
+                            What our customers said? (3 Feedbacks)
+                        </a>
+                    </p>
+                    <div class="collapse" id="collapseExample">
+                        <div class="well">
+                            <div class="media">
+                                <div class="media-left">
+                                    <a href="#">
+                                        <img class="media-object"
+                                             src="{% static 'info/upload/xstudent_01.png.pagespeed.ic.756JwMcqdq.png' %}"
+                                             alt="Generic placeholder image">
+                                    </a>
+                                </div>
+                                <div class="media-body">
+                                    <h4 class="media-heading">John DOE</h4>
+                                    <div class="rating">
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star-o"></i>
+                                    </div>
+                                    <p>This school really helps my child
+                                        develop, both in terms of
+                                        academics and character. So my
+                                        message to parents, don't hesitate
+                                        to send your child to school here!.</p>
+                                </div>
+                            </div>
+                            <div class="media">
+                                <div class="media-left">
+                                    <a href="#">
+                                        <img class="media-object"
+                                             src="{% static 'info/upload/xstudent_02.png.pagespeed.ic.y-PM-y4pVj.png' %}"
+                                             alt="Generic placeholder image">
+                                    </a>
+                                </div>
+                                <div class="media-body">
+                                    <h4 class="media-heading">Amanda FOXOE</h4>
+                                    <div class="rating">
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star-o"></i>
+                                    </div>
+                                    <p>I feel that the teachers here are
+                                        very good at guiding me, learning
+                                        becomes more fun because the
+                                        methods they use make me never
+                                        feel bored.</p>
+                                </div>
+                            </div>
+                            <div class="media">
+                                <div class="media-left">
+                                    <a href="#">
+                                        <img class="media-object"
+                                             src="{% static 'info/upload/xstudent_03.png.pagespeed.ic.uCQY3WNMCJ.png' %}"
+                                             alt="Generic placeholder image">
+                                    </a>
+                                </div>
+                                <div class="media-body">
+                                    <h4 class="media-heading">Mark BOBS</h4>
+                                    <div class="rating">
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                    </div>
+                                    <p>I never believed this school until i tried the school. it is one of the best school I have known. God bless the management of this school.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="other-courses">
+                    <img src="{% static 'info/images/xothers.png.pagespeed.ic.BLyi2PaMRC.png' %}" alt="" class="">
+                </div>
+            </div>
+        </div>
+        <hr class="invis">
+        <div id="owl-featured" class="owl-custom">
+            {% for course in course_list %}
+            <div class="owl-featured">
+                <div class="shop-item-list entry">
+                    <div class="">
+                        <img src="{{ course.image.url }}" alt="{{ course.title }}">
+                        <div class="magnifier">
+                        </div>
+                    </div>
+                    <div class="shop-item-title clearfix">
+                        <h4><a href="{% url 'course_details' course.id %}">{{ course.title }}</a></h4>
+                        <div class="shopmeta">
+                            <span class="pull-left">12 Student</span>
+                            <div class="rating pull-right">
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="visible-buttons">
+                        <a title="Read More" href="{% url 'course_details' course.id %}"><span class="fa fa-search"></span></a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endblock main %}

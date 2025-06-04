@@ -1,0 +1,148 @@
+{% extends 'info/index.html' %}
+
+{% load static %}
+
+{% block main %}
+<section class="grey page-title">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 text-left">
+                <h1>Happy Students</h1>
+            </div>
+            <div class="col-md-6 text-right">
+                <div class="bread">
+                    <ol class="breadcrumb">
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">Courses</a></li>
+                        <li class="active">Testimonials</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% load static %}
+<div > <!-- Set a definite height for the parent container -->
+    <img style="height: 100%; width: 100%; " src="{% static 'info/upload/abt-14.png' %}" alt="">
+</div>
+<section class="white section">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="section-title text-center">
+                    <h4>Happy Students</h4>
+                    <p>What Our Students Say About Unicorn-Tech3 Academy</p>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-4 col-md-4 col-sm-12">
+                <div class="testimonial">
+                    <img class="alignleft img-circle"
+                         src="{% static 'info/upload/stu2.jpeg' %}" alt="">
+                    <p>Before Unicorn-Tech3, coding felt like a mystery. Now, I'm building my own games and websites! It's amazing what I've learned. </p>
+                    <div class="testimonial-meta">
+                        <h4>David Luios <small></small></h4>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-12">
+                <div class="testimonial">
+                    <img class="alignleft img-circle"
+                         src="{% static 'info/upload/stu1.jpeg' %}" alt="">
+                    <p>I always loved computers, but this academy showed me how to actually create with them. The projects are so fun, and I'm learning real skills.</p>
+                    <div class="testimonial-meta">
+                        <h4>Gift Ambrose <small></small></h4>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-12">
+                <div class="testimonial">
+                    <img class="alignleft img-circle"
+                         src="{% static 'info/upload/stu3.jpeg' %}" alt="">
+                    <p>I used to struggle with problem-solving. Now, the way they teach us to think logically has helped me in all my subjects.</p>
+                    <div class="testimonial-meta">
+                        <h4>Adefemi Lucky <small><a href="#">tutsplus.com</a></small></h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div  class="button-wrapper text-center">
+            <p style="color: blue;" >At Unicorn-Tech3 Academy, we believe in unlocking every child’s potential to
+                become a tech unicorn start-up founder – an innovator who not only thrives
+                globally but also creates sustainable solutions to local challenges.  </p>
+            <a href="{% url 'course_list' %}" class="btn btn-default border-radius"><i class="fa fa-sign-in"></i> Join
+                Us
+                Today</a>
+            &nbsp;&nbsp;&nbsp;&nbsp; <a href="{% url 'course_list' %}" class="btn btn-primary"><i
+                class="fa fa-download"></i>
+            Download Our Bronchure</a>
+        </div>
+    </div>
+</section>
+
+{% load static %}
+<div > <!-- Set a definite height for the parent container -->
+    <img style="height: 100%; width: 100%; " src="{% static 'info/upload/abt-15.png' %}" alt="">
+</div>
+<section class="grey section">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="section-title text-center">
+                    <h4>Happy Parents</h4>
+                    <p>What Our Student Parent Say About Unicorn-Tech3 Academy</p>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-4 col-md-4 col-sm-12">
+                <div class="testimonial">
+                    <img class="alignleft img-circle"
+                         src="{% static 'info/upload/xstudent_01.png.pagespeed.ic.756JwMcqdq.png' %}" alt="">
+                    <p>I did not regret bringing my child to Unicorn-Tech3 Academy.  </p>
+                    <div class="testimonial-meta">
+                        <h4>John Liuedeg <small><a href="#">.com</a></small></h4>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-12">
+                <div class="testimonial">
+                    <img class="alignleft img-circle"
+                         src="{% static 'info/upload/xstudent_02.png.pagespeed.ic.y-PM-y4pVj.png' %}" alt="">
+                    <p>My child's performance had changed tremendiously.</p>
+                    <div class="testimonial-meta">
+                        <h4>Jenny Anderson <small><a href="#">photodune.com</a></small></h4>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-12">
+                <div class="testimonial">
+                    <img class="alignleft img-circle"
+                         src="{% static 'info/upload/xstudent_03.png.pagespeed.ic.uCQY3WNMCJ.png' %}" alt="">
+                    <p>The exact school I am looking for. Best for now.</p>
+                    <div class="testimonial-meta">
+                        <h4>Mark BOBS <small><a href="#">tutsplus.com</a></small></h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="button-wrapper text-center">
+            <p>At Unicorn-Tech3 Academy, we believe in unlocking every child’s potential to
+                become a tech unicorn start-up founder – an innovator who not only thrives
+                globally but also creates sustainable solutions to local challenges.  </p>
+            <a href="{% url 'course_list' %}" class="btn btn-default border-radius"><i class="fa fa-sign-in"></i> Join
+                Us
+                Today</a>
+            &nbsp;&nbsp;&nbsp;&nbsp; <a href="{% url 'course_list' %}" class="btn btn-primary"><i
+                class="fa fa-download"></i>
+            Download Our Bronchure</a>
+        </div>
+    </div>
+</section>
+{% load static %}
+<div > <!-- Set a definite height for the parent container -->
+    <img style="height: 100%; width: 100%; " src="{% static 'info/upload/abt-17.png' %}" alt="">
+</div>
+{% endblock main %}
