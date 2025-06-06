@@ -11,7 +11,6 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 """
 
 import os
-import dj_database_url 
 from decouple import config
 from django.utils.translation import gettext_lazy as _
 
@@ -27,9 +26,9 @@ SECRET_KEY = config(
 )
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = config("DEBUG", default=False, cast=bool)
+DEBUG = config("DEBUG", default=True, cast=bool)
 
-ALLOWED_HOSTS = ["127.0.0.1", 'localhost','.render.com', "*"]
+ALLOWED_HOSTS = ["127.0.0.1", 'localhost']
 
 # change the default user models to our custom model
 AUTH_USER_MODEL = "accounts.User"
@@ -109,26 +108,12 @@ WSGI_APPLICATION = "config.wsgi.application"
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 
-# Default to SQLite for local development, but use DATABASE_URL for production
-# Get DATABASE_URL from environment variables
-DATABASE_URL = os.environ.get("DATABASE_URL")
-
-if DATABASE_URL:
-    DATABASES = {
-        "default": dj_database_url.config(
-            default=DATABASE_URL,
-            conn_max_age=600, # Optional: controls the maximum age of database connections
-            ssl_require=True, # Recommended for secure connections to Render's PostgreSQL
-        )
+DATABASES = {
+    "default": {
+        "ENGINE": "django.db.backends.sqlite3",
+        "NAME": os.path.join(BASE_DIR, "db.sqlite3"),
     }
-else:
-    # Fallback to SQLite for local development if DATABASE_URL is not set
-    DATABASES = {
-        "default": {
-            "ENGINE": "django.db.backends.sqlite3",
-            "NAME": os.path.join(BASE_DIR, "db.sqlite3"),
-        }
-    }
+}
 
 # https://docs.djangoproject.com/en/stable/ref/settings/#std:setting-DEFAULT_AUTO_FIELD
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
